@@ -1,0 +1,2 @@
+class PlatformNotFoundException(Exception):
+    pass
