@@ -1,14 +1,18 @@
 from .Collection import Collection
 import json
+import csv
 
 
 class Tweets(Collection):
     def saveAsCSV(self, path):
-        with open(path, 'w') as file:
-            for tweet in self.items:
-                id = json.dumps(tweet.getId())
-                username = json.dumps(tweet.getUsername())
-                date = tweet.getDate()
-                text = json.dumps(tweet.getText(), ensure_ascii=False)
+        with open(path, "w") as file:
+            writer = csv.writer(file)
+            writer.writerow(["id", "date", "username", "text"])
 
-                file.write(f"{id},{date},{username},{text}\n")
+            for tweet in self.items:
+                id = tweet.getId()
+                username = tweet.getUsername()
+                date = tweet.getDate()
+                text = tweet.getText()
+
+                writer.writerow([id, date, username, text])
