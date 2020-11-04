@@ -4,7 +4,7 @@ import json
 
 class Tweets(Collection):
     def saveAsCSV(self, path):
-        with open(path, 'w') as file:
+        with open(path, 'w', encoding="utf-8") as file:
             for tweet in self.items:
                 id = json.dumps(tweet.getId())
                 username = json.dumps(tweet.getUsername())
