@@ -9,6 +9,7 @@ setup(
     url='https://github.com/leoyn/social-scraper',
     author='leoyn',
     keywords=["twitter", "social network", "scraping", "snscrape"],
+    python_requires='~=3.8',
     install_requires=[
         "snscrape@git+https://github.com/JustAnotherArchivist/snscrape.git#egg=snscrape"
     ],
