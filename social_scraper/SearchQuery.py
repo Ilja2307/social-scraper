@@ -4,6 +4,8 @@ class SearchQuery:
         self.query = query
         self.maximumItemCount = 0
         self.isVerbose = False
+        self.startDate = None
+        self.endDate = None
 
     def getQuery(self):
         query = self.query
