@@ -1,6 +1,7 @@
 from .Platform import Platform
 from social_scraper.items.Tweet import Tweet
 from social_scraper.collections.Tweets import Tweets
+from social_scraper.users.TwitterUser import TwitterUser
 
 import json
 import subprocess
@@ -28,11 +29,23 @@ class Twitter(Platform):
                 break
             else:
                 jsonData = json.loads(data.decode("UTF-8"))
+
+                user = TwitterUser()
+                user.setId(jsonData["user"]["id"])
+                user.setUsername(jsonData["user"]["username"])
+                user.setDisplayName(jsonData["user"]["displayname"])
+                user.setLocation(jsonData["user"]["location"])
+                user.setVerified(jsonData["user"]["verified"])
+                user.setFollowerCount(jsonData["user"]["followersCount"])
+                user.setFollowingCount(jsonData["user"]["friendsCount"])
+
                 tweet = Tweet()
                 tweet.setId(jsonData["id"])
-                tweet.setUsername(jsonData["user"]["username"])
+                tweet.setAuthor(user)
                 tweet.setText(jsonData["content"])
                 tweet.setDate(jsonData["date"])
+                tweet.setLikeCount(jsonData["likeCount"])
+                tweet.setRetweetCount(jsonData["retweetCount"])
 
                 tweets.append(tweet)
 
