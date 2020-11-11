@@ -2,11 +2,11 @@ from .CollectionItem import CollectionItem
 
 
 class Tweet(CollectionItem):
-    def setUsername(self, username):
-        self.username = username
+    def setAuthor(self, user):
+        self.author = user
 
-    def getUsername(self):
-        return self.username
+    def getAuthor(self):
+        return self.author
 
     def setId(self, id):
         self.id = id
@@ -25,3 +25,15 @@ class Tweet(CollectionItem):
 
     def getDate(self):
         return self.date
+
+    def setRetweetCount(self, retweetCount):
+        self.retweetCount = retweetCount
+
+    def getRetweetCount(self):
+        return self.retweetCount
+
+    def setLikeCount(self, likeCount):
+        self.likeCount = likeCount
+
+    def getLikeCount(self):
+        return self.likeCount
