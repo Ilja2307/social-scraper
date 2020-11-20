@@ -16,7 +16,15 @@ class Twitter(Platform):
             arguments.extend(
                 ['--max-results', str(searchQuery.getMaximumItemCount())])
 
-        arguments.extend(['twitter-search', searchQuery.getQuery()])
+        query = searchQuery.getQuery()
+
+        if searchQuery.getStartDate() != None:
+            query = f"{query} since:{searchQuery.getStartDate()}"
+
+        if searchQuery.getEndDate() != None:
+            query = f"{query} until:{searchQuery.getEndDate()}"
+
+        arguments.extend(['twitter-search', query])
 
         process = subprocess.Popen(arguments, stdout=subprocess.PIPE)
 
@@ -50,7 +58,7 @@ class Twitter(Platform):
                 tweets.append(tweet)
 
                 if searchQuery.isVerboseEnabled() == True:
-                    print(f"Downloading tweet #{i} ...")
+                    print(f"Downloading tweet #{i} from {tweet.getDate()} ...")
                 i = i + 1
 
         tweetCollection = Tweets()

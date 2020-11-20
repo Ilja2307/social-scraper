@@ -5,7 +5,7 @@ import csv
 
 class Tweets(Collection):
     def saveAsCSV(self, path):
-        with open(path, 'w', encoding="utf-8") as file:
+        with open(path, 'w', encoding="utf-8", newline="") as file:
             writer = csv.writer(file)
             writer.writerow(["tweet id", "date", "text", "likes", "retweets", "user id", "username",
                              "display name", "followers", "following", "user location", "is user verified"])

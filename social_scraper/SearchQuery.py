@@ -8,15 +8,7 @@ class SearchQuery:
         self.endDate = None
 
     def getQuery(self):
-        query = self.query
-
-        if self.startDate != None:
-            query = f"{query} since:{self.startDate}"
-
-        if self.endDate != None:
-            query = f"{query} until:{self.endDate}"
-
-        return query
+        return self.query
 
     def setMaximumItemCount(self, maximumItemCount):
         self.maximumItemCount = maximumItemCount
@@ -24,8 +16,14 @@ class SearchQuery:
     def setStartDate(self, startDate):
         self.startDate = startDate
 
+    def getStartDate(self):
+        return self.startDate
+
     def setEndDate(self, endDate):
         self.endDate = endDate
+
+    def getEndDate(self):
+        return self.endDate
 
     def getMaximumItemCount(self):
         return self.maximumItemCount
