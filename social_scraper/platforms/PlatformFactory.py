@@ -1,7 +1,7 @@
 from .PlatformEnumeration import PlatformEnumeration
-from .Twitter import Twitter
 from .PlatformNotFoundException import PlatformNotFoundException
-
+from .Twitter import Twitter
+from .Instagram import Instagram
 
 class PlatformFactory:
     @staticmethod
@@ -10,6 +10,8 @@ class PlatformFactory:
 
         if platformEnumeration == PlatformEnumeration.TWITTER:
             platform = Twitter()
+        elif platformEnumeration == PlatformEnumeration.INSTAGRAM:
+            platform = Instagram()
 
         if platform == None:
             raise PlatformNotFoundException(
